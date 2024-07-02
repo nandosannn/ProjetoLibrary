@@ -1,3 +1,4 @@
+package application;
 
 import java.util.Scanner;
 import java.util.List;
@@ -65,5 +66,13 @@ public class App {
                     break;
             }
         } while(opcao != 5);
+        
+        for (Book all : books){
+            System.out.println(all.getTitle()+ " - " + all.getAuthor());
+        }
+
+        for (User all : users){
+            System.out.println(all.getCpf());
+        }
     }
 }

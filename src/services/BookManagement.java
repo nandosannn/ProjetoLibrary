@@ -2,12 +2,13 @@ package services;
 
 import entities.Book;
 import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
 import enums.StatusLoan;
 
 public class BookManagement {
     //Methods
-    public void insertBookAll(ArrayList<Book> booksAll){
+    public void insertBookAll(List<Book> booksAll){
         String title;
         String author;
         Integer page;
@@ -25,21 +26,26 @@ public class BookManagement {
 
         booksAll.add(book);
 
-        input.close();
     }
 
-    public void removeBookAll(ArrayList<Book> bookAll){
+    public void removeBookAll(List<Book> bookAll){
         Scanner input = new Scanner(System.in);
         System.out.printf("Enter the title of book that you whish remove: ");
         String title = input.nextLine();
         System.out.printf("Enter the author of book that you whish remove: ");
         String author = input.nextLine();
 
+        Book auxBook = new Book();
+        boolean find = false;
+
         for(Book books : bookAll){
-            if(books.getTitle() == title && books.getAuthor() == author){
-                bookAll.remove(books);
+            if(books.getTitle().equals(title) && books.getAuthor().equals(author)){
+                auxBook = books;
+                find = true;
             }
         }
-        input.close();
+        if (find) {
+            bookAll.remove(auxBook);
+        }
     }
 }
